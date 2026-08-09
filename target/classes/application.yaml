@@ -25,12 +25,20 @@ spring:
       schema-locations: classpath:db/schema.sql
       data-locations: classpath:db/data.sql
 
+  # ai:
+  #   google:
+  #     genai:
+  #       #api-key: ${GCP_API_KEY}
+  #       chat:
+  #         options:
+  #           model: gemini-2.0-flash
+  #           temperature: 0.2
+  #           max-output-tokens: 2048
+
   ai:
-    google:
-      genai:
-        api-key: ${GCP_API_KEY}
-        chat:
-          options:
-            model: gemini-2.5-flash
-            temperature: 0.2
-            max-output-tokens: 2048
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: llama3.2 # Options: llama3.2, qwen2.5, mistral
+          temperature: 0.2

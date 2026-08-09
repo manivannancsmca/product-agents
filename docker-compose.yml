@@ -14,6 +14,44 @@ services:
       - "4001:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: product_agent_ollama
+    restart: always
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    # Optional GPU support for NVIDIA GPUs:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+  # Helper service to automatically pull the model on startup
+  ollama-model-puller:
+    image: curlimages/curl:latest
+    container_name: ollama_model_puller
+    depends_on:
+      - ollama
+    entrypoint: >
+      /bin/sh -c "
+      echo 'Waiting for Ollama service to start...';
+      until curl -s http://ollama:11434/api/tags > /dev/null; do sleep 3; done;
+      echo 'Ollama service is up. Pulling llama3.2 model...';
+      curl -X POST http://ollama:11434/api/pull -d '{\"name\": \"llama3.2\"}';
+      echo 'Model llama3.2 pulled successfully!';
+      "
 
 volumes:
   mysql_data:
+  ollama_data:
