@@ -11,7 +11,7 @@ services:
       MYSQL_USER: agent_user
       MYSQL_PASSWORD: agent_password
     ports:
-      - "3306:3306"
+      - "4001:3306"
     volumes:
       - mysql_data:/var/lib/mysql
 

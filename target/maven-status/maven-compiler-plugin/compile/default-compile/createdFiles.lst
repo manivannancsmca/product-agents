@@ -1,0 +1,12 @@
+com\product_agent\tool\ProductTools$StockUpdateRequest.class
+com\product_agent\model\Product.class
+com\product_agent\tool\ProductTools.class
+com\product_agent\dto\AgentResponse.class
+com\product_agent\dto\AgentRequest.class
+com\product_agent\service\ProductAgentService.class
+com\product_agent\tool\ProductTools$CreateProductRequest.class
+com\product_agent\config\AiConfig.class
+com\product_agent\ProductAgentApplication.class
+com\product_agent\repository\ProductRepository.class
+com\product_agent\controller\AgentController.class
+com\product_agent\model\Product$ProductBuilder.class

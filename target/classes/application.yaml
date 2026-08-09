@@ -6,7 +6,7 @@ spring:
     name: product-agent
 
   datasource:
-    url: jdbc:mysql://localhost:3306/product_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:4001/product_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: agent_user
     password: agent_password
     driver-class-name: com.mysql.cj.jdbc.Driver
