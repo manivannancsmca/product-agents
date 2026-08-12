@@ -1,3 +1,4 @@
+
 # Product Management AI Agent (Spring Boot + Spring AI + Ollama + MySQL)
 
 An autonomous AI Agent application built with **Spring Boot 3**, **Spring AI**, **Ollama**, and **MySQL**. The agent uses local function/tool calling capabilities via `llama3.2` to query and mutate product data inside MySQL without external API keys or cloud dependencies.
